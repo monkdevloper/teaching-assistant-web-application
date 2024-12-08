@@ -13,12 +13,13 @@
       
       <!-- Dropdown to Update Status -->
       <label for="status-<%= app._id %>"><strong>Update Status:</strong></label>
+      <div class="select-container">
       <select id="status-<%= app._id %>" name="status" required>
         <option value="pending" <%= app.status === 'pending' ? 'selected' : '' %>>Pending</option>
         <option value="approved" <%= app.status === 'approved' ? 'selected' : '' %>>Approved</option>
         <option value="denied" <%= app.status === 'denied' ? 'selected' : '' %>>Denied</option>
       </select>
-      
+    </div>
       <!-- Submit Button -->
       <button type="submit" style="margin-top: 0.5rem;">Update</button>
     </form>
@@ -26,3 +27,4 @@
 <% } else { %>
   <p>No applications available to manage at the moment.</p>
 <% } %>
+<%- include('footer') %>

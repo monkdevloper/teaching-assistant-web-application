@@ -4,29 +4,24 @@
 <!-- Student Dashboard -->
 <% if (role === 'student') { %>
 <h2>Available Courses</h2>
-<form action="/student/apply" method="POST">
+<div class="course-grid">
   <% courses.forEach(course => { %>
-  <div
-    style="
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    "
-  >
+  <div class="course-card">
     <p><strong>Course Name:</strong> <%= course.name %></p>
     <% // Check if the student has already applied for this course const
     application = applications.find(app => app.course._id.toString() ===
     course._id.toString()); if (application) { %>
     <p><strong>Status:</strong> <%= application.status %></p>
     <% } else { %>
-    <button type="submit" name="courseId" value="<%= course._id %>">
-      Apply
-    </button>
+    <form action="/student/apply" method="POST">
+      <button type="submit" name="courseId" value="<%= course._id %>">
+        Apply
+      </button>
+    </form>
     <% } %>
   </div>
   <% }) %>
-</form>
+</div>
 
 <h2>Your Applications</h2>
 <% if (applications.length > 0) { %>
@@ -75,4 +70,4 @@
 </div>
 <% }) %> <% } else { %>
 <p>No courses created yet.</p>
-<% } %> <% } %>
+<% } %> <% } %> <%- include('footer') %>

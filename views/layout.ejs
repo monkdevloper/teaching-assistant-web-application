@@ -5,11 +5,14 @@
     <link rel="stylesheet" href="/styles/style.css" />
   </head>
   <body>
+    <!-- Stunning Header -->
+    <header>Florida <span>Atlantic</span> University</header>
+
+    <!-- Navigation Bar -->
     <nav>
       <a href="/">Home</a>
       <a href="/logout">Logout</a>
       <a href="/register">Register</a>
-
       <% if (role === 'staff') { %>
       <a href="/staff/dashboard">Manage Courses</a>
       <% } else if (role === 'student') { %>
@@ -18,6 +21,8 @@
       <a href="/instructor/dashboard">Manage Applications</a>
       <% } %>
     </nav>
+
+    <!-- Main Content -->
     <main><%- body %></main>
   </body>
 </html>
