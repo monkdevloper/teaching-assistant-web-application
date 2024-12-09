@@ -29,7 +29,7 @@ router.post("/update-status", async (req, res) => {
     console.log("Processed Status:", status);
 
     // Validate status value
-    if (!["pending", "approved", "denied"].includes(status)) {
+    if (!["pending", "committee_approved", "denied"].includes(status)) {
       return res.status(400).render("error", {
         message: "Invalid status value. Please select a valid status.",
       });
@@ -39,7 +39,7 @@ router.post("/update-status", async (req, res) => {
     const updatedApplication = await Application.findByIdAndUpdate(
       applicationId,
       { status },
-      { new: true }
+      { new: true } // Return the updated document
     );
 
     if (!updatedApplication) {

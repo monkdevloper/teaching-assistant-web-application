@@ -14,8 +14,25 @@ router.get("/dashboard", async (req, res) => {
       student: req.cookies.userId,
     }).populate("course");
 
-    // Render the dashboard with courses and applications
-    res.render("dashboard", { courses, applications, role: "student" });
+    // Update application statuses for display
+    const processedApplications = applications.map((app) => ({
+      course: app.course,
+      status:
+        app.status === "instructor_approved"
+          ? "Approved"
+          : app.status === "committee_approved"
+          ? "Pending Instructor Approval"
+          : app.status === "denied"
+          ? "Denied"
+          : "Pending Committee Approval",
+    }));
+
+    // Render the dashboard with courses and processed applications
+    res.render("dashboard", {
+      courses,
+      applications: processedApplications,
+      role: "student",
+    });
   } catch (error) {
     console.error("Error loading student dashboard:", error);
     res.status(500).send("Internal Server Error");
@@ -48,7 +65,7 @@ router.post("/apply", async (req, res) => {
       return res.status(404).send("Course not found.");
     }
 
-    // Create a new application
+    // Create a new application with default status as "pending"
     await Application.create({ student: req.cookies.userId, course: courseId });
     res.redirect("/student/dashboard");
   } catch (error) {

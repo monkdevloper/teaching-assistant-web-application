@@ -1,0 +1,27 @@
+<%- include('layout', { body: '' }) %>
+<h1>Instructor Dashboard</h1>
+
+<!-- Instructor Dashboard -->
+<h2>Manage Applications</h2>
+<% if (applications.length > 0) { %>
+<div class="application-grid">
+  <% applications.forEach(app => { %>
+  <div class="application-card">
+    <p><strong>Course Name:</strong> <%= app.course.name %></p>
+    <p><strong>Student Name:</strong> <%= app.student.username %></p>
+    <p><strong>Current Status:</strong> Committee Approved</p>
+    <form action="/instructor/update-status" method="POST">
+      <input type="hidden" name="applicationId" value="<%= app._id %>" />
+      <label for="status-<%= app._id %>"><strong>Update Status:</strong></label>
+      <select id="status-<%= app._id %>" name="status" required>
+        <option value="instructor_approved">Approve</option>
+        <option value="denied">Deny</option>
+      </select>
+      <button type="submit">Update</button>
+    </form>
+  </div>
+  <% }) %>
+</div>
+<% } else { %>
+<p>No applications available for review.</p>
+<% } %> <%- include('footer') %>

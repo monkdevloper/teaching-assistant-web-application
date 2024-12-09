@@ -13,10 +13,13 @@ const applicationSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["pending", "approved", "denied"],
+    enum: ["pending", "committee_approved", "instructor_approved", "denied"],
     default: "pending",
   },
-  createdAt: { type: Date, default: Date.now },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Application", applicationSchema);

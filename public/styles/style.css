@@ -234,6 +234,121 @@ select:disabled {
 .course-card button:hover {
   background-color: #c82333;
 }
+/* Grid Layout for Applications */
+.application-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Application Card Styling */
+.application-card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.application-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.application-card p {
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.application-card select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.application-card button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #004085;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.application-card button:hover {
+  background-color: #c82333;
+}
+/* Application Form Styling */
+.application-form {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.application-form:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.application-form p {
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.application-form label {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+/* Dropdown Styling */
+.select-container {
+  margin-top: 0.5rem;
+}
+
+.select-container select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+}
+
+.select-container select:focus {
+  border-color: #004085;
+  box-shadow: 0 0 5px rgba(0, 64, 133, 0.5);
+  background-color: #ffffff;
+}
+
+/* Update Button */
+.update-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  background-color: #004085;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.update-button:hover {
+  background-color: #c82333;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
