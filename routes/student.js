@@ -40,13 +40,14 @@ router.get("/dashboard", async (req, res) => {
 });
 
 // Apply for a Course
+// Apply for a Course
 router.post("/apply", async (req, res) => {
   try {
-    const { courseId } = req.body;
+    const { courseId, skills, resumeLink, phoneNumber } = req.body;
 
-    // Validate courseId
-    if (!courseId) {
-      return res.status(400).send("Course ID is required.");
+    // Validate input
+    if (!courseId || !skills || !resumeLink || !phoneNumber) {
+      return res.status(400).send("All fields are required.");
     }
 
     // Check if the student has already applied for this course
@@ -65,8 +66,15 @@ router.post("/apply", async (req, res) => {
       return res.status(404).send("Course not found.");
     }
 
-    // Create a new application with default status as "pending"
-    await Application.create({ student: req.cookies.userId, course: courseId });
+    // Create a new application with additional details
+    await Application.create({
+      student: req.cookies.userId,
+      course: courseId,
+      skills,
+      resumeLink,
+      phoneNumber,
+    });
+
     res.redirect("/student/dashboard");
   } catch (error) {
     console.error("Error applying for course:", error);

@@ -6,6 +6,9 @@
     <form action="/committee/update-status" method="POST" class="application-form">
       <p><strong>Course:</strong> <%= app.course.name %></p>
       <p><strong>Student:</strong> <%= app.student.username %></p>
+      <p><strong>Skills:</strong> <%= app.skills %></p>
+      <p><strong>Resume Link:</strong> <a href="<%= app.resumeLink %>" target="_blank">View Resume</a></p>
+      <p><strong>Phone Number:</strong> <%= app.phoneNumber %></p>
       <p><strong>Current Status:</strong> 
         <%= app.status === 'pending' ? 'Pending Committee Approval' : 
             app.status === 'committee_approved' ? 'Committee Approved' :

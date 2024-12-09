@@ -72,28 +72,58 @@ nav a:hover {
   color: #c82333;
 }
 
-/* Forms */
+/* General Form Styling */
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Input Fields */
 form input[type="text"],
 form input[type="password"],
-form input[type="email"] {
-  width: 90%;
-  max-width: 400px;
+form input[type="email"],
+form input[type="url"],
+form input[type="tel"],
+form textarea,
+form select {
+  width: 100%;
   padding: 0.8rem;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 1rem;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: #004085;
+  box-shadow: 0 0 5px rgba(0, 64, 133, 0.3);
+  outline: none;
+  background-color: #fff;
+}
+
+/* Textarea Styling */
+form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Submit Button */
 form button {
-  width: 90%;
-  max-width: 400px;
+  width: 100%;
   padding: 0.8rem;
   border: none;
   border-radius: 5px;
@@ -102,11 +132,58 @@ form button {
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 form button:hover {
   background-color: #c82333;
+  transform: translateY(-2px);
+}
+
+form button:active {
+  transform: translateY(0);
+  background-color: #a71d2a;
+}
+
+/* Labels */
+form label {
+  width: 100%;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+/* Error Message Styling */
+form .error-message {
+  color: #c82333;
+  font-size: 0.9rem;
+  text-align: left;
+  width: 100%;
+}
+
+/* Success Message Styling */
+form .success-message {
+  color: #28a745;
+  font-size: 0.9rem;
+  text-align: left;
+  width: 100%;
+}
+
+/* Responsive Form Design */
+@media (max-width: 768px) {
+  form {
+    padding: 1rem;
+    box-shadow: none;
+    border: none;
+    background: none;
+  }
+
+  form input,
+  form button,
+  form textarea {
+    width: 100%;
+  }
 }
 
 /* Footer */

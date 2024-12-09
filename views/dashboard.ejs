@@ -13,10 +13,37 @@
     course._id.toString()); if (application) { %>
     <p><strong>Status:</strong> <%= application.status %></p>
     <% } else { %>
+    <!-- Form to Apply for a Course -->
     <form action="/student/apply" method="POST">
-      <button type="submit" name="courseId" value="<%= course._id %>">
-        Apply
-      </button>
+      <input type="hidden" name="courseId" value="<%= course._id %>" />
+      <label for="skills-<%= course._id %>">Skills:</label>
+      <input
+        type="text"
+        id="skills-<%= course._id %>"
+        name="skills"
+        placeholder="Enter your skills"
+        required
+      />
+
+      <label for="resumeLink-<%= course._id %>">Resume Link:</label>
+      <input
+        type="url"
+        id="resumeLink-<%= course._id %>"
+        name="resumeLink"
+        placeholder="Enter your resume link"
+        required
+      />
+
+      <label for="phoneNumber-<%= course._id %>">Phone Number:</label>
+      <input
+        type="tel"
+        id="phoneNumber-<%= course._id %>"
+        name="phoneNumber"
+        placeholder="Enter your phone number"
+        required
+      />
+
+      <button type="submit">Apply</button>
     </form>
     <% } %>
   </div>
@@ -53,14 +80,7 @@
 
 <h2>Your Courses</h2>
 <% if (courses.length > 0) { %> <% courses.forEach(course => { %>
-<div
-  style="
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  "
->
+<div class="course-card">
   <p><strong>Course Name:</strong> <%= course.name %></p>
   <form action="/staff/delete-course" method="POST" style="display: inline">
     <button type="submit" name="courseId" value="<%= course._id %>">

@@ -1,15 +1,23 @@
 <%- include('layout', { body: '' }) %>
 <h1>Instructor Dashboard</h1>
 
-<!-- Instructor Dashboard -->
 <h2>Manage Applications</h2>
+
 <% if (applications.length > 0) { %>
 <div class="application-grid">
   <% applications.forEach(app => { %>
   <div class="application-card">
     <p><strong>Course Name:</strong> <%= app.course.name %></p>
     <p><strong>Student Name:</strong> <%= app.student.username %></p>
+    <p><strong>Skills:</strong> <%= app.skills %></p>
+    <p>
+      <strong>Resume Link:</strong>
+      <a href="<%= app.resumeLink %>" target="_blank">View Resume</a>
+    </p>
+    <p><strong>Phone Number:</strong> <%= app.phoneNumber %></p>
     <p><strong>Current Status:</strong> Committee Approved</p>
+
+    <!-- Form to Update Status -->
     <form action="/instructor/update-status" method="POST">
       <input type="hidden" name="applicationId" value="<%= app._id %>" />
       <label for="status-<%= app._id %>"><strong>Update Status:</strong></label>
@@ -17,7 +25,7 @@
         <option value="instructor_approved">Approve</option>
         <option value="denied">Deny</option>
       </select>
-      <button type="submit">Update</button>
+      <button type="submit" class="update-button">Update</button>
     </form>
   </div>
   <% }) %>

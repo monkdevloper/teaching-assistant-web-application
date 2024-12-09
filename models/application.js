@@ -11,6 +11,18 @@ const applicationSchema = new mongoose.Schema({
     ref: "Course",
     required: true,
   },
+  skills: {
+    type: String,
+    required: true,
+  },
+  resumeLink: {
+    type: String,
+    required: true,
+  },
+  phoneNumber: {
+    type: String,
+    required: true,
+  },
   status: {
     type: String,
     enum: ["pending", "committee_approved", "instructor_approved", "denied"],
